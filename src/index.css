@@ -103,6 +103,7 @@ input {
 
 .items {
   flex: 1;
+  overflow: auto;
 }
 
 .drawer {
