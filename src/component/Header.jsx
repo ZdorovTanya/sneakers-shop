@@ -1,4 +1,4 @@
-const Header = () => {
+const Header = (props) => {
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
@@ -16,7 +16,7 @@ const Header = () => {
       </div>
 
       <ul className="d-flex">
-        <li className="mr-30">
+        <li className="mr-30 cursor" onClick={props.onClikCart}>
           <svg
             width="20"
             height="20"

@@ -1,5 +1,13 @@
+import React, { useEffect, useState } from "react";
+
 const Card = (props) => {
-    
+  const [isAdded, setIsAdded] = useState(false);
+
+  const onClickPlus = () => {
+    setIsAdded(!isAdded);
+  };
+
+
   return (
     <div className="card">
       <div className="favorite" onClick={props.onClickFavorite}>
@@ -13,9 +21,13 @@ const Card = (props) => {
           <span>Цена:</span>
           <b>{props.price} руб.</b>
         </div>
-        <button className="button" onClick={props.onClickPlus}>
-          <img width={11} height={11} src="/img/pls.svg" alt="" />
-        </button>
+
+        <img
+          className="cursor"
+          src={isAdded ? "/img/cheked.svg" : "/img/pls.svg"}
+          alt="plus"
+          onClick={onClickPlus}
+        />
       </div>
     </div>
   );
