@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 
-const Card = ({onClickFavorite, image, title, price, onPlus }) => {
+const Card = ({image, title, price, onPlus }) => {
+  // разобраться с пропсами избранных
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const onClickPlus = () => {
-    onPlus({title, image, price});
+    onPlus({ title, image, price });
     setIsAdded(!isAdded);
   };
 
+  const onClickFavorite = () => {
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <div className="card">
       <div className="favorite" onClick={onClickFavorite}>
-        <img src="/img/unliked.svg" alt="unliked" />
+        <img
+          src={isFavorite ? "/img/liked.svg" : "/img/unliked.svg"}
+          alt="unliked"
+        />
       </div>
 
       <img width={133} height={112} src={image} alt="" />

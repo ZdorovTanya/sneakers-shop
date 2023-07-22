@@ -29,6 +29,11 @@ function App() {
     setCartItems((prev) => [...prev, obj]);
   };
 
+  const onRemoveItem = (id) => {
+    axios.delete(`https://64b91d1379b7c9def6c096ac.mockapi.io/cart/${id}`);
+    setCartItems((prev) => prev.filter(item => item.id !== id));
+  }
+
   const onChangeSearchInput = (event) => {
     setSearchValue(event.target.value);
   };
@@ -39,6 +44,7 @@ function App() {
         <Drawer
           items={cartItems}
           onClikCart={() => setCartOpened(!cartOpened)}
+          onRemove = {onRemoveItem}
         />
       )}
 
@@ -78,6 +84,7 @@ function App() {
                 price={item.price}
                 image={item.img}
                 onPlus={(obj) => onAddToCart(obj)}
+                // onFavorite={onFavorite}
               />
             ))}
         </div>
