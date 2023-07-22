@@ -76,6 +76,13 @@ header {
   border: 1px solid #f3f3f3;
   border-radius: 10px;
   padding: 0 15px;
+  position: relative;
+}
+
+.inputClear{
+  position: absolute;
+  left: 227px;
+  top: 19px;
 }
 
 input {

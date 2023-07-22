@@ -20,7 +20,7 @@ const Drawer = ({onClikCart, items=[]}) => {
                 width={70}
                 height={70}
                 src={obj.image}
-                alt=""
+                alt="sneakers"
               />
 
               <div className="mr-20">
