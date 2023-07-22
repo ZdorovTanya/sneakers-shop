@@ -17,9 +17,15 @@ function App() {
       .then((res) => {
         setItems(res.data);
       });
+
+    axios.get("https://64b91d1379b7c9def6c096ac.mockapi.io/cart")
+    .then((res) => {
+      setCartItems(res.data);
+    });
   }, []);
 
   const onAddToCart = (obj) => {
+    axios.post("https://64b91d1379b7c9def6c096ac.mockapi.io/cart", obj);
     setCartItems((prev) => [...prev, obj]);
   };
 
