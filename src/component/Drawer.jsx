@@ -1,29 +1,36 @@
-const Drawer = (props) => {
+const Drawer = ({onClikCart, items=[]}) => {
   return (
-    <div  className="overlay">
+    <div className="overlay">
       <div className="drawer">
         <h2 className="mb-30 d-flex justify-between">
           Корзина
-          <img onClick={props.onClikCart} className="removeBtn cu-p" src="/img/remove.svg" alt="remove" />
+          <img
+            onClick={onClikCart}
+            className="removeBtn cu-p"
+            src="/img/remove.svg"
+            alt="remove"
+          />
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
-            <img
-              className="mr-20"
-              width={70}
-              height={70}
-              src="/img/sneakers/1.jpg"
-              alt=""
-            />
+          {items.map((obj) => (
+            <div className="cartItem d-flex align-center mb-20">
+              <img
+                className="mr-20"
+                width={70}
+                height={70}
+                src={obj.image}
+                alt=""
+              />
 
-            <div className="mr-20">
-              <p className="mb-5">Мужские Кроссовки Nike Air Max 270</p>
-              <b>12 999 руб.</b>
+              <div className="mr-20">
+                <p className="mb-5">{obj.title}</p>
+                <b>{obj.price} руб.</b>
+              </div>
+
+              <img className="removeBtn" src="/img/remove.svg" alt="remove" />
             </div>
-
-            <img className="removeBtn" src="/img/remove.svg" alt="remove" />
-          </div>
+          ))}
         </div>
 
         <div className="cartTotalBlock">

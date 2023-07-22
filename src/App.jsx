@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 function App() {
   const [cartOpened, setCartOpened] = useState(false);
   const [items, setItems] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect (() => {
     fetch ('https://64b91d1379b7c9def6c096ac.mockapi.io/items')
@@ -20,11 +21,15 @@ function App() {
       setItems(json);
     })
   }, [])
+
+  const onAddToCart = (obj) => {
+    setCartItems(prev => [...prev, obj]);
+  }
   
 
   return (
     <div className="wrapper clear">
-      {cartOpened && <Drawer onClikCart={() => setCartOpened(!cartOpened)} />}
+      {cartOpened && <Drawer items={cartItems} onClikCart={() => setCartOpened(!cartOpened)} />}
 
       <Header onClikCart={() => setCartOpened(!cartOpened)} />
 
@@ -38,11 +43,12 @@ function App() {
         </div>
 
         <div className="d-flex flex-wrap">
-          {items.map((obj) => (
+          {items.map((item) => (
             <Card 
-            title={obj.title} 
-            price={obj.price} 
-            image={obj.img} 
+            title={item.title} 
+            price={item.price} 
+            image={item.img} 
+            onPlus = {(obj) => onAddToCart(obj)}
             />
           ))}
         </div>
