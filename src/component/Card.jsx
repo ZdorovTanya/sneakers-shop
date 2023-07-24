@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 
-const Card = ({image, title, price, onPlus }) => {
+const Card = ({id, image, title, price, onPlus }) => {
   // разобраться с пропсами избранных
   const [isAdded, setIsAdded] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
 
   const onClickPlus = () => {
-    onPlus({ title, image, price });
+    onPlus({ id, title, image, price });
     setIsAdded(!isAdded);
   };
 
