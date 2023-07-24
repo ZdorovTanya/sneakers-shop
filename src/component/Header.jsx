@@ -1,14 +1,18 @@
+import { NavLink } from "react-router-dom";
+
 const Header = (props) => {
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
-        <img
-          className="mr-20"
-          width={40}
-          height={40}
-          src="/img/logo.png"
-          alt="logo"
-        />
+        <NavLink to="/">
+          <img
+            className="mr-20"
+            width={40}
+            height={40}
+            src="/img/logo.png"
+            alt="logo"
+          />
+        </NavLink>
         <div className="headerInfo">
           <h3 className="text-uppercase">React Sneakers</h3>
           <p className="opacity-5">Магазин лучших кроссовок</p>
@@ -47,6 +51,15 @@ const Header = (props) => {
             />
           </svg>
           <span className="ml-10">1205 руб.</span>
+        </li>
+        <li>
+          <NavLink to="/favorites">
+            <img
+              className="mr-30 cursor"
+              src="/img/favorite-pages.svg"
+              alt="Закладки"
+            />
+          </NavLink>
         </li>
         <li>
           <svg
