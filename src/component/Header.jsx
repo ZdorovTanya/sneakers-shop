@@ -1,6 +1,10 @@
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../App";
+import React from "react";
 
 const Header = (props) => {
+  const {cartItems} = React.useContext(AppContext);
+  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0)
   return (
     <header className="d-flex justify-between align-center p-40">
       <div className="d-flex align-center">
@@ -50,7 +54,7 @@ const Header = (props) => {
               stroke-linejoin="round"
             />
           </svg>
-          <span className="ml-10">1205 руб.</span>
+          <span className="ml-10">{totalPrice} руб.</span>
         </li>
         <li>
           <NavLink to="/favorites">

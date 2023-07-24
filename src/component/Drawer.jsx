@@ -1,5 +1,11 @@
+import { AppContext } from "../App";
+import React from "react";
+
 const Drawer = ({ onClikCart, onRemove, items = [] }) => {
+  const {cartItems} = React.useContext(AppContext);
+  const totalPrice = cartItems.reduce((sum, obj) => obj.price + sum, 0)
   return (
+    
     <div className="overlay">
       <div className="drawer">
         <h2 className="mb-30 d-flex justify-between">
@@ -45,12 +51,12 @@ const Drawer = ({ onClikCart, onRemove, items = [] }) => {
                 <li>
                   <span>Итого:</span>
                   <div></div>
-                  <b>21 489 руб.</b>
+                  <b>{totalPrice} руб.</b>
                 </li>
                 <li>
                   <span>Налог 5%:</span>
                   <div></div>
-                  <b>1074 руб.</b>
+                  <b>{totalPrice / 100 *5} руб.</b>
                 </li>
               </ul>
               <button className="greenBtn">Оформить заказ</button>
